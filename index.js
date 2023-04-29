@@ -22,3 +22,9 @@ app.get('', (req, res) => {
         description: "Jane is seeking for Jade."
     });
 })
+
+app.get("/test/script.js", (req, res) => {
+    res.render('script', {
+        link_to_api: `https://jsonplaceholder.typicode.com/albums?userId=1`,
+    });
+});

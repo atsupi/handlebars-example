@@ -1,0 +1,52 @@
+console.log("invoking /script.js");
+console.log("static API link is used.");
+
+const API_URL="https://jsonplaceholder.typicode.com/albums?userId=1";
+
+const callApi = async () => {
+  console.log("Accessing to URL:%s", API_URL);
+  const res = await fetch(API_URL);
+  return await res.json();
+}
+
+const table_header = [
+    "Id",
+    "Title",
+];
+
+function createTitleTable(data) {
+    console.log("Creating table: raw=%d", data.length);
+    var table = document.createElement('table');
+    var tr = document.createElement('tr');
+    for (var j = 0; j < table_header.length; j++) {
+        // create header raw
+        var th = document.createElement('th');
+        th.textContent = table_header[j];
+        tr.appendChild(th);
+    }
+    table.appendChild(tr);
+    for (var i = 0; i < data.length; i++) {
+      var tr = document.createElement('tr');
+      for (var j = 0; j < table_header.length; j++) {
+        // create data raws
+        var td = document.createElement('td'); 
+        switch (j) {
+        case 0:
+            td.textContent = data[i].id;
+            break;
+        case 1:
+            td.textContent = data[i].title;
+            break;
+        default:
+        }
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+    document.getElementById('List_Wrapper').appendChild(table);
+}
+
+const result = callApi().then((data) => {
+    console.log(data);
+    createTitleTable(data);
+})
