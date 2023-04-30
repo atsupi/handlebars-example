@@ -1,7 +1,8 @@
-console.log("invoking test/script.js");
-console.log("handlebars is used to link API");
-
+const HIERARCHY="{{{submodule}}}";
 const API_URL="{{{link_to_api}}}";
+
+console.log("invoking %s/script.js", HIERARCHY);
+console.log("handlebars is used to link API");
 
 const callApi = async () => {
   console.log("Accessing to URL:%s", API_URL);

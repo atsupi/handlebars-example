@@ -9,11 +9,9 @@ const listener = app.listen(PORT, () => {
 });
 
 app.use(express.static('src'));
-app.get("/test", (req, res) => {
-    res.contentType('html');
-    res.status(200).sendFile(__dirname + "/test/index.html");
-    console.log("GET: test/index.html");
-});
+// /test -> src/test
+// /test2 -> src/test2
+// /index.html -> views/index.hbs
 
 app.set('view engine', 'hbs');
 app.get('', (req, res) => {
@@ -25,6 +23,14 @@ app.get('', (req, res) => {
 
 app.get("/test/script.js", (req, res) => {
     res.render('script', {
-        link_to_api: `https://jsonplaceholder.typicode.com/albums?userId=1`,
+        submodule: "test",
+        link_to_api: "https://jsonplaceholder.typicode.com/albums?userId=1",
+    });
+});
+
+app.get("/test2/script.js", (req, res) => {
+    res.render('script', {
+        submodule: "test2",
+        link_to_api: "https://jsonplaceholder.typicode.com/albums?userId=1",
     });
 });
