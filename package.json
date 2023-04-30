@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/atsupi/handlebars-example#readme",
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.321.1",
+    "aws-sdk": "^2.1368.0",
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "nodemon": "^2.0.22"
